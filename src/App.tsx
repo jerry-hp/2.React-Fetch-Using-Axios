@@ -219,7 +219,7 @@ class App extends React.Component<{}, Tstate> {
                   <Heading size="sm" textAlign={"center"}>
                     {item.title}
                   </Heading>
-                  <Text overflow="hidden" textAlign="justify" h={{ sm: "100px", base: "800" }}>
+                  <Text overflow="hidden" textAlign="justify" h={{ sm: "100px", base: "80px" }}>
                     {item.desc}
                   </Text>
                   <Box display={"flex"} justifyContent={"space-around"}>
