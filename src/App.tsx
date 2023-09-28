@@ -1,9 +1,9 @@
 import React from "react";
-import "./App.css";
+import { Box, Divider, Heading, FormControl, Input, Button, Card, CardBody, Image, Text } from "@chakra-ui/react";
+import { Accordion, AccordionItem, AccordionButton, AccordionPanel, AccordionIcon } from "@chakra-ui/react";
 import axios from "axios";
 
 interface Tstate {
-  dataCard: any[];
   Borgir: boolean;
   Bread: boolean;
   Breakfast: boolean;
@@ -16,19 +16,15 @@ interface Tstate {
   Spicy: boolean;
   Sweet: boolean;
   Favourite: boolean;
-  Featured: boolean;
+  Feature: boolean;
   New: boolean;
-  category: boolean;
-  tags: boolean;
-  closeCategory: boolean;
-  closeTags: boolean;
+  dataCard: any[];
 }
 
 class App extends React.Component<{}, Tstate> {
-  constructor(props: {}) {
+  constructor(props: any) {
     super(props);
     this.state = {
-      dataCard: [],
       Borgir: false,
       Bread: false,
       Breakfast: false,
@@ -41,208 +37,207 @@ class App extends React.Component<{}, Tstate> {
       Spicy: false,
       Sweet: false,
       Favourite: false,
-      Featured: false,
+      Feature: false,
       New: false,
-      category: false,
-      tags: false,
-      closeCategory: true,
-      closeTags: true,
+      dataCard: [],
     };
   }
-  componentDidMount(): void {
-    axios
-      .get("https://api.npoint.io/15a3da86315e932c0d44/")
-      .then((res) => {
-        this.setState({ dataCard: res.data });
-        console.log(res.data);
-      })
-      .catch((error) => {
-        alert(error);
-      });
-  }
-  isBorgir = () => {
+
+  handleBorgir = () => {
     this.setState({ Borgir: true });
   };
-  isBread = () => {
+  handleBread = () => {
     this.setState({ Bread: true });
   };
-  isBreakfast = () => {
+  handleBreakfast = () => {
     this.setState({ Breakfast: true });
   };
-  isChocolate = () => {
-    this.setState({ Chocolate: true });
-  };
-  isFries = () => {
-    this.setState({ Fries: true });
-  };
-  isNoodles = () => {
-    this.setState({ Noodles: true });
-  };
-  isSausage = () => {
-    this.setState({ Sausage: true });
-  };
-  isSpicy = () => {
-    this.setState({ Spicy: true });
-  };
-  isSweet = () => {
-    this.setState({ Sweet: true });
-  };
-  isDesert = () => {
-    this.setState({ Desert: true });
-  };
-  isCake = () => {
+  handleCake = () => {
     this.setState({ Cake: true });
   };
-  isFavourite = () => {
+  handleChocolate = () => {
+    this.setState({ Chocolate: true });
+  };
+  handleDesert = () => {
+    this.setState({ Desert: true });
+  };
+  handleFries = () => {
+    this.setState({ Fries: true });
+  };
+  handleNoodles = () => {
+    this.setState({ Noodles: true });
+  };
+  handleSausage = () => {
+    this.setState({ Sausage: true });
+  };
+  handleSpicy = () => {
+    this.setState({ Spicy: true });
+  };
+  handleSweet = () => {
+    this.setState({ Sweet: true });
+  };
+  handleFavourite = () => {
     this.setState({ Favourite: true });
   };
-  isFeatured = () => {
-    this.setState({ Featured: true });
+  handleFeature = () => {
+    this.setState({ Feature: true });
   };
-  isNew = () => {
+  handleNew = () => {
     this.setState({ New: true });
   };
-  handleClick = () => {
-    const { Borgir, Bread, Breakfast, Cake, Chocolate, Desert, Fries, Noodles, Sausage, Spicy, Sweet, Favourite, Featured, New } = this.state;
+
+  showAlert = () => {
+    const { Borgir, Bread, Breakfast, Cake, Chocolate, Desert, Fries, Noodles, Sausage, Spicy, Sweet, Favourite, Feature, New } = this.state;
 
     alert(
-      `ANDA MEMILIH:\n \n${Borgir ? "✨Borgir\n" : ""}${Bread ? "✨Bread\n" : ""}${Breakfast ? "✨Breakfast\n" : ""}${Cake ? "✨Cake\n" : ""}${Chocolate ? "✨Chocolate\n " : ""}${Desert ? "✨Desert\n " : ""}${Fries ? "✨Fries\n " : ""}${
-        Noodles ? "✨Noodles\n " : ""
-      }${Sausage ? "✨Sausage\n " : ""}${Spicy ? "✨Spicy\n " : ""}${Sweet ? "✨Sweet\n " : ""}${Favourite ? "✨Favourite\n " : ""}${Featured ? "✨Featured\n " : ""}${New ? "✨New\n " : ""}\n TERIMA KASIH!`
+      `ANDA MEMILIH:\n\n${Borgir ? "🎇Borgir\n" : ""}${Bread ? "🎇Bread\n" : ""}${Breakfast ? "🎇Breakfast\n" : ""}${Chocolate ? "🎇Chocolate\n" : ""}${Desert ? "🎇Desert\n" : ""}${Fries ? "🎇Fries\n" : ""}${Noodles ? "🎇Noodles\n" : ""}${
+        Sausage ? "🎇Sausage\n" : ""
+      }${Spicy ? "🎇Spicy\n" : ""}${Sweet ? "🎇Sweet\n" : ""}${Cake ? "🎇Cake\n" : ""}${Favourite ? "🎇Favourite\n" : ""}${Feature ? "🎇Feature\n" : ""}${New ? "🎇New\n" : ""}\nTERIMA KASIH!`
     );
-    this.setState({ Borgir: false, Bread: false, Breakfast: false, Cake: false, Chocolate: false, Desert: false, Fries: false, Noodles: false, Sausage: false, Spicy: false, Sweet: false, Favourite: false, Featured: false, New: false });
+    this.setState({ Borgir: false, Bread: false, Breakfast: false, Cake: false, Chocolate: false, Desert: false, Fries: false, Noodles: false, Sausage: false, Spicy: false, Sweet: false, Favourite: false, Feature: false, New: false });
   };
-  openCategory = () => {
-    this.setState({ category: true, closeCategory: false });
-  };
-  openTags = () => {
-    this.setState({ tags: true, closeTags: false });
-  };
-  closeAllTabs = () => {
-    this.setState({ closeCategory: true, closeTags: true, category: false, tags: false });
-  };
+  componentDidMount(): void {
+    axios.get("https://api.npoint.io/15a3da86315e932c0d44").then((res) => {
+      this.setState({ dataCard: res.data });
+    });
+  }
 
   render() {
-    const { dataCard, Borgir, Bread, Breakfast, Cake, Chocolate, Desert, Fries, Noodles, Sausage, Spicy, Sweet, category, tags, Favourite, Featured, New, closeCategory, closeTags } = this.state;
-    return (
-      <>
-        <div className="container">
-          <div className="leftContainer">
-            <h1>Filter</h1>
-            <hr />
-            <input className="cari" type="text" />
-            <button onClick={this.handleClick}>Cari</button>
-            {/*  */}
-            <div className="categoryCnt">
-              <label htmlFor="gg">kategori</label>
-              <button id="gg" className="btnHiden" onClick={this.openCategory}>
-                {closeCategory && <i className="fa-solid fa-arrow-left-long"></i>}
-                {category && <i className="fa-solid fa-arrow-down-long"></i>}
-              </button>
-            </div>
-            {category && (
-              <div className="checkboxCnt">
-                <div>
-                  <input type="checkbox" id="cb1" checked={Borgir} onChange={this.isBorgir} />
-                  <label htmlFor="cb1">Borgir</label>
-                </div>
-                <div>
-                  <input type="checkbox" id="cb2" checked={Bread} onChange={this.isBread} />
-                  <label htmlFor="cb2">Bread</label>
-                </div>
-                <div>
-                  <input type="checkbox" id="cb3" checked={Breakfast} onChange={this.isBreakfast} />
-                  <label htmlFor="cb3">Breakfast</label>
-                </div>
-                <div>
-                  <input type="checkbox" id="cb4" checked={Cake} onChange={this.isCake} />
-                  <label htmlFor="cb4">Cake</label>
-                </div>
-                <div>
-                  <input type="checkbox" id="cb5" checked={Chocolate} onChange={this.isChocolate} />
-                  <label htmlFor="cb5">Chocolate</label>
-                </div>
-                <div>
-                  <input type="checkbox" id="cb6" checked={Desert} onChange={this.isDesert} />
-                  <label htmlFor="cb6">Desert</label>
-                </div>
-                <div>
-                  <input type="checkbox" id="cb7" checked={Fries} onChange={this.isFries} />
-                  <label htmlFor="cb7">Fries</label>
-                </div>
-                <div>
-                  <input type="checkbox" id="cb8" checked={Noodles} onChange={this.isNoodles} />
-                  <label htmlFor="cb8">Noodles</label>
-                </div>
-                <div>
-                  <input type="checkbox" id="cb9" checked={Sausage} onChange={this.isSausage} />
-                  <label htmlFor="cb9">Sausage</label>
-                </div>
-                <div>
-                  <input type="checkbox" id="cb10" checked={Spicy} onChange={this.isSpicy} />
-                  <label htmlFor="cb10">Spicy</label>
-                </div>
-                <div>
-                  <input type="checkbox" id="cb11" checked={Sweet} onChange={this.isSweet} />
-                  <label htmlFor="cb11">Sweet</label>
-                </div>
-              </div>
-            )}
-            {/*  */}
-            <div className="categoryCnt">
-              <label htmlFor="gj">Tags</label>
-              <button id="gj" className="btnHiden" onClick={this.openTags}>
-                {closeTags && <i className="fa-solid fa-arrow-left-long"></i>}
-                {tags && <i className="fa-solid fa-arrow-down-long"></i>}
-              </button>
-            </div>
-            {tags && (
-              <div className="checkboxCnt">
-                <div>
-                  <input type="checkbox" id="mr" checked={Favourite} onChange={this.isFavourite} />
-                  <label id="merah" htmlFor="mr">
-                    FAVOURITE
-                  </label>
-                </div>
-                <div>
-                  <input type="checkbox" id="kn" checked={Featured} onChange={this.isFeatured} />
-                  <label id="kuning" htmlFor="kn">
-                    FEATURED
-                  </label>
-                </div>
-                <div>
-                  <input type="checkbox" id="hj" checked={New} onChange={this.isNew} />
-                  <label id="hijau" htmlFor="hj">
-                    NEW
-                  </label>
-                </div>
-              </div>
-            )}
-            {(category || tags) && (
-              <div className="allTabsCnt">
-                <button id="allTabs" className="allTabs" onClick={this.closeAllTabs}>
-                  Close Opened Tab <i className="fa-regular fa-circle-xmark"></i>
-                </button>
-              </div>
-            )}
-          </div>
+    const { Borgir, Bread, Breakfast, Cake, Chocolate, Desert, Fries, Noodles, Sausage, Spicy, Sweet, Favourite, Feature, New, dataCard } = this.state;
 
-          {/*  */}
-          <div className="cardContainer">
-            {dataCard.map((item, index) => (
-              <div key={index} className="card">
-                <img src={item.Image} />
-                <h3>{item.title}</h3>
-                <p>{item.desc}</p>
-                <div>
-                  <button>{item.button1}</button>
-                  {item.button2 && <button>{item.button2}</button>}
-                </div>
-              </div>
+    return (
+      <div>
+        <Box maxW={"1516px"} display="flex" flexDirection={{ sm: "row", base: "column" }}>
+          <Box w={{ sm: "40%", base: "100%" }} bg="white" padding="20px">
+            <Heading>Filter</Heading>
+            <Divider borderColor={"black"} />
+            <FormControl display={"flex"} my={"1rem"}>
+              <Input placeholder="" flex={3} borderRadius="10px 0 0 10px" />
+              <Button bg={"grey"} color="white" flex={1} borderRadius="0 10px 10px 0" onClick={this.showAlert}>
+                Cari
+              </Button>
+            </FormControl>
+            <Accordion allowToggle>
+              <AccordionItem>
+                <AccordionButton disabled={false}>
+                  <Box as="span" flex="1" textAlign="left">
+                    Category
+                  </Box>
+                  <AccordionIcon />
+                </AccordionButton>
+                <AccordionPanel pb={4}>
+                  <input type="checkbox" checked={Borgir} onChange={this.handleBorgir} style={{ marginRight: "1rem", cursor: "pointer" }} id="Borgir" />
+                  <label htmlFor="Borgir" style={{ cursor: "pointer" }}>
+                    Borgir
+                  </label>
+                  <Box mb={2} />
+                  <input type="checkbox" checked={Bread} onChange={this.handleBread} style={{ marginRight: "1rem", cursor: "pointer" }} id="Bread" />
+                  <label htmlFor="Bread" style={{ cursor: "pointer" }}>
+                    Bread
+                  </label>
+                  <Box mb={2} />
+                  <input type="checkbox" checked={Breakfast} onChange={this.handleBreakfast} style={{ marginRight: "1rem", cursor: "pointer" }} id="bf" />
+                  <label htmlFor="bf" style={{ cursor: "pointer" }}>
+                    Breakfast
+                  </label>
+                  <Box mb={2} />
+                  <input type="checkbox" checked={Cake} onChange={this.handleCake} style={{ marginRight: "1rem", cursor: "pointer" }} id="c" />
+                  <label htmlFor="c" style={{ cursor: "pointer" }}>
+                    Cake
+                  </label>
+                  <Box mb={2} />
+                  <input type="checkbox" checked={Chocolate} onChange={this.handleChocolate} style={{ marginRight: "1rem", cursor: "pointer" }} id="cc" />
+                  <label htmlFor="cc" style={{ cursor: "pointer" }}>
+                    Chocolate
+                  </label>
+                  <Box mb={2} />
+                  <input type="checkbox" checked={Desert} onChange={this.handleDesert} style={{ marginRight: "1rem", cursor: "pointer" }} id="d" />
+                  <label htmlFor="d" style={{ cursor: "pointer" }}>
+                    Desert
+                  </label>
+                  <Box mb={2} />
+                  <input type="checkbox" checked={Fries} onChange={this.handleFries} style={{ marginRight: "1rem", cursor: "pointer" }} id="ff" />
+                  <label htmlFor="ff" style={{ cursor: "pointer" }}>
+                    Fries
+                  </label>
+                  <Box mb={2} />
+                  <input type="checkbox" checked={Noodles} onChange={this.handleNoodles} style={{ marginRight: "1rem", cursor: "pointer" }} id="nnn" />
+                  <label htmlFor="nnn" style={{ cursor: "pointer" }}>
+                    Noodles
+                  </label>
+                  <Box mb={2} />
+                  <input type="checkbox" checked={Sausage} onChange={this.handleSausage} style={{ marginRight: "1rem", cursor: "pointer" }} id="sss" />
+                  <label htmlFor="sss" style={{ cursor: "pointer" }}>
+                    Sausage
+                  </label>
+                  <Box mb={2} />
+                  <input type="checkbox" checked={Spicy} onChange={this.handleSpicy} style={{ marginRight: "1rem", cursor: "pointer" }} id="ssss" />
+                  <label htmlFor="ssss" style={{ cursor: "pointer" }}>
+                    Spicy
+                  </label>
+                  <Box mb={2} />
+                  <input type="checkbox" checked={Sweet} onChange={this.handleSweet} style={{ marginRight: "1rem", cursor: "pointer" }} id="sssss" />
+                  <label htmlFor="sssss" style={{ cursor: "pointer" }}>
+                    Sweet
+                  </label>
+                  <Box mb={2} />
+                </AccordionPanel>
+              </AccordionItem>
+              <AccordionItem>
+                <AccordionButton disabled={false}>
+                  <Box as="span" flex="1" textAlign="left">
+                    Tags
+                  </Box>
+                  <AccordionIcon />
+                </AccordionButton>
+                <AccordionPanel pb={4}>
+                  <input type="checkbox" checked={Favourite} onChange={this.handleFavourite} id="Favourite" style={{ marginRight: "1rem", cursor: "pointer" }} />
+                  <label htmlFor="Favourite" style={{ backgroundColor: "green", color: "white", padding: "0 10px 4px 10px", borderRadius: "10PX", cursor: "pointer" }}>
+                    Favourite
+                  </label>
+
+                  <Box mb="2" />
+                  <input type="checkbox" checked={Feature} onChange={this.handleFeature} id="Featured" style={{ marginRight: "1rem", cursor: "pointer" }} />
+                  <label htmlFor="Featured" style={{ backgroundColor: "red", color: "white", padding: "0 10px 4px 10px", borderRadius: "10PX", cursor: "pointer" }}>
+                    Featured
+                  </label>
+
+                  <Box mb="2" />
+                  <input type="checkbox" checked={New} onChange={this.handleNew} id="New" style={{ marginRight: "1rem", cursor: "pointer" }} />
+                  <label htmlFor="New" style={{ backgroundColor: "black", color: "white", padding: "0 10px 4px 10px", borderRadius: "10PX", cursor: "pointer" }}>
+                    New
+                  </label>
+                </AccordionPanel>
+              </AccordionItem>
+            </Accordion>
+          </Box>
+          <Box w={{ sm: "80%", base: "100%" }} bg="#dddddd" boxSizing="border-box" p={"20px"} display="flex" flexWrap="wrap">
+            {dataCard.map((item, ind) => (
+              <Card key={ind} w={{ lg: "28%", md: "45%", sm: "80%", base: "80%" }} m="0 auto" mb="2rem" borderRadius={"20px"} boxShadow="0 0 0 3px red,0 0 0 6px yellow,0 0 0 9px green">
+                <Image w="100%" h={"180px"} borderRadius={"20px 20px 0 0"} src={item.Image} />
+                <CardBody>
+                  <Heading size="sm" textAlign={"center"}>
+                    {item.title}
+                  </Heading>
+                  <Text overflow="hidden" textAlign="justify" h={{ sm: "100px", base: "800" }}>
+                    {item.desc}
+                  </Text>
+                  <Box display={"flex"} justifyContent={"space-around"}>
+                    <Button variant="outline" colorScheme="blue">
+                      {item.button1}
+                    </Button>
+                    {item.button2 && (
+                      <Button variant="outline" colorScheme="blue">
+                        {item.button2}
+                      </Button>
+                    )}
+                  </Box>
+                </CardBody>
+              </Card>
             ))}
-          </div>
-        </div>
-      </>
+          </Box>
+        </Box>
+      </div>
     );
   }
 }
