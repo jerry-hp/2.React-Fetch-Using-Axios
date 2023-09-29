@@ -108,7 +108,7 @@ class App extends React.Component<{}, Tstate> {
     return (
       <div>
         <Box maxW={"1516px"} display="flex" flexDirection={{ sm: "row", base: "column" }}>
-          <Box w={{ sm: "40%", base: "100%" }} bg="white" padding="20px">
+          <Box w={{lg:"20%", sm: "40%", base: "100%" }} bg="white" padding="20px">
             <Heading>Filter</Heading>
             <Divider borderColor={"black"} />
             <FormControl display={"flex"} my={"1rem"}>
@@ -211,7 +211,7 @@ class App extends React.Component<{}, Tstate> {
               </AccordionItem>
             </Accordion>
           </Box>
-          <Box w={{ sm: "80%", base: "100%" }} bg="#dddddd" boxSizing="border-box" p={"20px"} display="flex" flexWrap="wrap">
+          <Box w={{lg:"80%", sm: "60%", base: "100%" }} bg="#dddddd" boxSizing="border-box" p={"20px"} display="flex" flexWrap="wrap">
             {dataCard.map((item, ind) => (
               <Card key={ind} w={{ lg: "28%", md: "45%", sm: "80%", base: "80%" }} m="0 auto" mb="2rem" borderRadius={"20px"} boxShadow="0 0 0 3px red,0 0 0 6px yellow,0 0 0 9px green">
                 <Image w="100%" h={"180px"} borderRadius={"20px 20px 0 0"} src={item.Image} />
