@@ -226,13 +226,13 @@ class Home extends React.Component<{}, Tstate> {
                   <Text overflow="hidden" textAlign="justify" h={{ sm: "100px", base: "80px" }}>
                     {item.desc}
                   </Text>
-                  <Box display={"flex"} justifyContent={"space-around"}>
-                    <Button variant="solid" color={"green"}>
-                      {item.button1}
+                  <Box display={"flex"} justifyContent={"left"}>
+                    <Button variant="ghost" color={"green"} p="0">
+                      #{item.button1}
                     </Button>
                     {item.button2 && (
-                      <Button variant="solid" color={"red"}>
-                        {item.button2}
+                      <Button variant="ghost" color={"red"} p="0 0 0 5px" >
+                        #{item.button2}
                       </Button>
                     )}
                   </Box>
