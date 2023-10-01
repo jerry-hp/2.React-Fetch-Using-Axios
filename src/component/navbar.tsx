@@ -7,7 +7,7 @@ export default class Navbar extends React.Component {
     return (
       <>
         <Box w="100%" h="max-content" borderBottom="1px solid grey" p="8px">
-          <Box maxW="1400px" m="0  auto" display="flex" justifyContent="space-between">
+          <Box maxW="1200px" m="0  auto" display="flex" justifyContent="space-between">
             <Box display="flex">
               <Image src={logo} w="40px" />
             </Box>
