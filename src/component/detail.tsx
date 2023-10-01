@@ -50,11 +50,11 @@ export default function Detail() {
           {dataCard.desc}
         </Text>
         <Box gridArea={"btn"} display={"flex"} justifyContent={"left"}>
-          <Button variant="ghost" color={"green"} p="0">
+          <Button variant="unstyled" color={"green"} p="0">
             #{dataCard.button1}
           </Button>
           {dataCard.button2 && (
-            <Button variant="ghost" color={"red"} p="0 0 0 5px">
+            <Button variant="unstyled" color={"red"} p="0 0 0 5px">
               #{dataCard.button2}
             </Button>
           )}

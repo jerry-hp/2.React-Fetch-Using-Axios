@@ -218,7 +218,7 @@ class Home extends React.Component<{}, Tstate> {
               <Card key={ind} w={{ lg: "28%", md: "45%", sm: "80%", base: "80%" }} m="0 auto" mb="2rem" borderRadius={"20px"} boxShadow="0 0 0 3px red,0 0 0 6px yellow,0 0 0 9px green">
                 <Image w="100%" h={"180px"} borderRadius={"20px 20px 0 0"} src={item.Image} />
                 <CardBody>
-                  <Link to={"/detail/" + ind}> 
+                  <Link to={"/detail/" + ind}>
                     <Heading size="sm" textAlign={"center"}>
                       {item.title}
                     </Heading>
@@ -227,11 +227,11 @@ class Home extends React.Component<{}, Tstate> {
                     {item.desc}
                   </Text>
                   <Box display={"flex"} justifyContent={"left"}>
-                    <Button variant="ghost" color={"green"} p="0">
+                    <Button variant="unstyled" color={"green"} p="0">
                       #{item.button1}
                     </Button>
                     {item.button2 && (
-                      <Button variant="ghost" color={"red"} p="0 0 0 5px" >
+                      <Button variant="unstyled" color={"red"} p="0 0 0 5px">
                         #{item.button2}
                       </Button>
                     )}
