@@ -27,7 +27,7 @@ export default function Detail() {
 
   return (
     <div>
-      <Navbar />
+      <Navbar backgroundImage="radial-gradient(circle, #ff0000, #cd5800, #957200, #5b7d00, #008000)" />
       <Box
         maxW="800px"
         bg="gray"
