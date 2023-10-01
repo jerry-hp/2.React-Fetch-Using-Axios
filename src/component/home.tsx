@@ -215,7 +215,7 @@ class Home extends React.Component<{}, Tstate> {
           </Box>
           <Box w={{ lg: "80%", sm: "60%", base: "100%" }} boxSizing="border-box" p={"20px"} display="flex" flexWrap="wrap" backgroundImage="radial-gradient(circle, #ff0000, #cd5800, #957200, #5b7d00, #008000)">
             {dataCard.map((item, ind) => (
-              <Card key={ind} w={{ lg: "28%", md: "45%", sm: "80%", base: "80%" }} m="0 auto" mb="2rem" borderRadius={"20px"} boxShadow="0 0 0 3px red,0 0 0 6px yellow,0 0 0 9px green">
+              <Card key={ind} w={{ lg: "28%", md: "45%", sm: "80%", base: "80%" }} m="0 auto" mb="2rem" borderRadius={"20px"} boxShadow="0 0 0 3px red,0 0 0 6px yellow,0 0 0 9px green" bg="grey" color="#dddddd">
                 <Image w="100%" h={"180px"} borderRadius={"20px 20px 0 0"} src={item.Image} />
                 <CardBody>
                   <Link to={"/detail/" + ind}>

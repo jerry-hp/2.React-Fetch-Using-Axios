@@ -14,7 +14,7 @@ export default class Navbar extends React.Component<Tp> {
             <Box display="flex">
               <Image src={logo} w="40px" />
             </Box>
-            <Heading color={"#040404"}>Food Store</Heading>
+            <Heading>Food Store</Heading>
             <Box display="flex" gap="10px">
               <Button bg="green" color="white">
                 Login
