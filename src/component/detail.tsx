@@ -2,6 +2,7 @@ import { Box, Heading, Image, Text, Button } from "@chakra-ui/react";
 import axios from "axios";
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
+import Navbar from "./navbar";
 
 interface TdataCard {
   title: string;
@@ -9,10 +10,11 @@ interface TdataCard {
   desc: string;
   button1: string;
   button2?: string;
+  tag: string;
 }
 
 export default function Detail() {
-  const [dataCard, setDataCard] = useState<TdataCard>({ title: "", Image: "", desc: "", button1: "", button2: "" });
+  const [dataCard, setDataCard] = useState<TdataCard>({ title: "", Image: "", desc: "", button1: "", button2: "", tag: "" });
   const { id } = useParams<string>();
 
   useEffect(() => {
@@ -23,6 +25,7 @@ export default function Detail() {
 
   return (
     <div>
+      <Navbar />
       <Box
         maxW="800px"
         bg="gray"
@@ -42,6 +45,11 @@ export default function Detail() {
         </Heading>
         <Image h="100%" w={"100%"} borderRadius="20px" gridArea="image" src={dataCard.Image}></Image>
         <Text color="#dddddd" gridArea={"text"} textAlign={"justify"}>
+          {dataCard.tag && (
+            <Button ml="auto" bg="orange" color="black">
+              {dataCard.tag}
+            </Button>
+          )}{" "}
           {dataCard.desc}
           {dataCard.desc}
           {dataCard.desc}

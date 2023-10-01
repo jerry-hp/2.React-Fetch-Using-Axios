@@ -1,8 +1,9 @@
 import React from "react";
-import { Box, Divider, Heading, FormControl, Input, Button, Card, CardBody, Image, Text } from "@chakra-ui/react";
+import { Box, Heading, FormControl, Input, Button, Card, CardBody, Image, Text } from "@chakra-ui/react";
 import { Accordion, AccordionItem, AccordionButton, AccordionPanel, AccordionIcon } from "@chakra-ui/react";
 import { Link } from "react-router-dom";
 import axios from "axios";
+import Navbar from "./navbar";
 
 interface Tstate {
   Borgir: boolean;
@@ -109,10 +110,10 @@ class Home extends React.Component<{}, Tstate> {
 
     return (
       <div>
+        <Navbar />
         <Box maxW={"1516px"} display="flex" flexDirection={{ sm: "row", base: "column" }}>
           <Box w={{ lg: "20%", sm: "40%", base: "100%" }} bg="white" padding="20px">
             <Heading>Filter</Heading>
-            <Divider borderColor={"black"} />
             <FormControl display={"flex"} my={"1rem"}>
               <Input placeholder="" flex={3} borderRadius="10px 0 0 10px" />
               <Button bg={"grey"} color="white" flex={1} borderRadius="0 10px 10px 0" onClick={this.showAlert}>
@@ -233,6 +234,11 @@ class Home extends React.Component<{}, Tstate> {
                     {item.button2 && (
                       <Button variant="unstyled" color={"red"} p="0 0 0 5px">
                         #{item.button2}
+                      </Button>
+                    )}
+                    {item.tag && (
+                      <Button ml="auto" bg="orangered" color="white">
+                        {item.tag}
                       </Button>
                     )}
                   </Box>
