@@ -100,7 +100,7 @@ class Home extends React.Component<{}, Tstate> {
   };
 
   componentDidMount(): void {
-    axios.get("https://api.npoint.io/15a3da86315e932c0d44").then((res) => {
+    axios.get("https://api.npoint.io/3e72c110229ae65ddcc7").then((res) => {
       this.setState({ dataCard: res.data });
     });
   }
@@ -112,8 +112,7 @@ class Home extends React.Component<{}, Tstate> {
       <div>
         <Navbar />
         <Box maxW={"1516px"} display="flex" flexDirection={{ sm: "row", base: "column" }}>
-          <Box w={{ lg: "20%", sm: "40%", base: "100%" }} bg="white" padding="20px">
-            <Heading>Filter</Heading>
+          <Box w={{ lg: "20%", sm: "40%", base: "100%" }} bg="white" padding=" 0 20px">
             <FormControl display={"flex"} my={"1rem"}>
               <Input placeholder="" flex={3} borderRadius="10px 0 0 10px" />
               <Button bg={"grey"} color="white" flex={1} borderRadius="0 10px 10px 0" onClick={this.showAlert}>
@@ -214,7 +213,7 @@ class Home extends React.Component<{}, Tstate> {
               </AccordionItem>
             </Accordion>
           </Box>
-          <Box w={{ lg: "80%", sm: "60%", base: "100%" }} bg="#dddddd" boxSizing="border-box" p={"20px"} display="flex" flexWrap="wrap">
+          <Box w={{ lg: "80%", sm: "60%", base: "100%" }} boxSizing="border-box" p={"20px"} display="flex" flexWrap="wrap" backgroundImage="radial-gradient(circle, #ff0000, #cd5800, #957200, #5b7d00, #008000)">
             {dataCard.map((item, ind) => (
               <Card key={ind} w={{ lg: "28%", md: "45%", sm: "80%", base: "80%" }} m="0 auto" mb="2rem" borderRadius={"20px"} boxShadow="0 0 0 3px red,0 0 0 6px yellow,0 0 0 9px green">
                 <Image w="100%" h={"180px"} borderRadius={"20px 20px 0 0"} src={item.Image} />
@@ -236,9 +235,19 @@ class Home extends React.Component<{}, Tstate> {
                         #{item.button2}
                       </Button>
                     )}
-                    {item.tag && (
-                      <Button ml="auto" bg="orangered" color="white">
-                        {item.tag}
+                    {item.new && (
+                      <Button ml="auto" bg="red" color="white">
+                        {item.new}
+                      </Button>
+                    )}
+                    {item.featured && (
+                      <Button ml="auto" bg="#f78c0a" color="white">
+                        {item.featured}
+                      </Button>
+                    )}
+                    {item.favourite && (
+                      <Button ml="auto" bg="green" color="white">
+                        {item.favourite}
                       </Button>
                     )}
                   </Box>

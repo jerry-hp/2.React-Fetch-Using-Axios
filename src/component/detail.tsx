@@ -10,15 +10,17 @@ interface TdataCard {
   desc: string;
   button1: string;
   button2?: string;
-  tag: string;
+  new: string;
+  favourite: string;
+  featured: string;
 }
 
 export default function Detail() {
-  const [dataCard, setDataCard] = useState<TdataCard>({ title: "", Image: "", desc: "", button1: "", button2: "", tag: "" });
+  const [dataCard, setDataCard] = useState<TdataCard>({ title: "", Image: "", desc: "", button1: "", button2: "", new: "", favourite: "", featured: "" });
   const { id } = useParams<string>();
 
   useEffect(() => {
-    axios.get(`https://api.npoint.io/15a3da86315e932c0d44/${id}`).then((res) => {
+    axios.get(`https://api.npoint.io/3e72c110229ae65ddcc7/${id}`).then((res) => {
       setDataCard(res.data);
     });
   }, []);
@@ -45,9 +47,19 @@ export default function Detail() {
         </Heading>
         <Image h="100%" w={"100%"} borderRadius="20px" gridArea="image" src={dataCard.Image}></Image>
         <Text color="#dddddd" gridArea={"text"} textAlign={"justify"}>
-          {dataCard.tag && (
-            <Button ml="auto" bg="orange" color="black">
-              {dataCard.tag}
+          {dataCard.new && (
+            <Button ml="auto" bg="red" color="white">
+              {dataCard.new}
+            </Button>
+          )}
+          {dataCard.featured && (
+            <Button ml="auto" bg="#f78c0a" color="white">
+              {dataCard.featured}
+            </Button>
+          )}
+          {dataCard.favourite && (
+            <Button ml="auto" bg="green" color="white">
+              {dataCard.favourite}
             </Button>
           )}{" "}
           {dataCard.desc}
