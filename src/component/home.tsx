@@ -111,7 +111,7 @@ class Home extends React.Component<{}, Tstate> {
     return (
       <div>
         <Navbar backgroundImage="" />
-        <Box maxW={"1516px"} display="flex" flexDirection={{ sm: "row", base: "column" }}>
+        <Box maxW={"1516px"} display="flex" flexDirection={{ sm: "row", base: "column" }} fontFamily={"hack"}>
           <Box w={{ lg: "20%", sm: "40%", base: "100%" }} bg="white" padding=" 0 20px">
             <FormControl display={"flex"} my={"1rem"}>
               <Input placeholder="" flex={3} borderRadius="10px 0 0 10px" />
