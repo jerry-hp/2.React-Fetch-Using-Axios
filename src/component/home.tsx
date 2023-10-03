@@ -111,7 +111,7 @@ class Home extends React.Component<{}, Tstate> {
     return (
       <div>
         <Navbar backgroundImage="" />
-        <Box maxW={"1516px"} display="flex" flexDirection={{ sm: "row", base: "column" }} fontFamily={"hack"}>
+        <Box maxW={"1516px"} display="flex" flexDirection={{ sm: "row", base: "column" }} fontFamily={"hack"} m="0 auto">
           <Box w={{ lg: "20%", sm: "40%", base: "100%" }} bg="white" padding=" 0 20px">
             <FormControl display={"flex"} my={"1rem"}>
               <Input placeholder="" flex={3} borderRadius="10px 0 0 10px" />
@@ -215,7 +215,18 @@ class Home extends React.Component<{}, Tstate> {
           </Box>
           <Box w={{ lg: "80%", sm: "60%", base: "100%" }} boxSizing="border-box" p={"20px"} display="flex" flexWrap="wrap" backgroundImage="radial-gradient(circle, #ff0000, #cd5800, #957200, #5b7d00, #008000)">
             {dataCard.map((item, ind) => (
-              <Card key={ind} w={{ lg: "28%", md: "45%", sm: "80%", base: "80%" }} m="0 auto" mb="2rem" borderRadius={"20px"} boxShadow="0 0 0 3px red,0 0 0 6px yellow,0 0 0 9px green" bg="grey" color="#dddddd">
+              <Card
+                key={ind}
+                w={{ lg: "28%", md: "45%", sm: "80%", base: "80%" }}
+                m="0 auto"
+                my="2rem"
+                borderRadius={"20px"}
+                boxShadow="0 0 0 3px red,0 0 0 6px yellow,0 0 0 9px green"
+                bg="grey"
+                color="#dddddd"
+                transition=".5s ease-in-out"
+                _hover={{ transform: "scale(1.2) rotatex(360deg)" }}
+              >
                 <Image w="100%" h={"180px"} borderRadius={"20px 20px 0 0"} src={item.Image} />
                 <CardBody>
                   <Link to={"/detail/" + ind}>
@@ -236,18 +247,18 @@ class Home extends React.Component<{}, Tstate> {
                       </Button>
                     )}
                     {item.new && (
-                      <Button ml="auto" bg="red" color="white">
-                        {item.new}
+                      <Button ml="auto" bg="red" color="white" transform="translate(-90px,-340px) skewy(5deg)" border="2px solid yellow">
+                        💖{item.new}✨
                       </Button>
                     )}
                     {item.featured && (
-                      <Button ml="auto" bg="#f78c0a" color="white">
-                        {item.featured}
+                      <Button ml="auto" bg="#f78c0a" color="white" transform="translate(-63px,-340px) " border="2px solid yellow">
+                        🤞{item.featured}🎉
                       </Button>
                     )}
                     {item.favourite && (
-                      <Button ml="auto" bg="green" color="white">
-                        {item.favourite}
+                      <Button ml="auto" bg="green" color="white" transform="translate(-60px,-340px)" border="2px solid yellow">
+                        💚{item.favourite}🔫
                       </Button>
                     )}
                   </Box>
